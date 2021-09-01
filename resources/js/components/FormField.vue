@@ -61,10 +61,16 @@ export default {
             return this.field.layouts || false
         },
         orderedGroups() {
-            return this.order.reduce((groups, key) => {
+            console.log('orderedGroups');
+            console.log(this.order);
+            let result = this.order.reduce((groups, key) => {
                 groups.push(this.groups[key]);
                 return groups;
             }, []);
+
+            console.log('reduce result:');
+            console.log(result);
+            return result;
         },
 
         limitCounter() {
@@ -198,6 +204,7 @@ export default {
          */
         moveUp(key) {
             let index = this.order.indexOf(key);
+            console.log('moveUp: ' + key + ' - ' + index);
 
             if(index <= 0) return;
 
@@ -209,6 +216,7 @@ export default {
          */
         moveDown(key) {
             let index = this.order.indexOf(key);
+            console.log('moveDown: ' + key + ' - ' + index);
 
             if(index < 0 || index >= this.order.length - 1) return;
 
